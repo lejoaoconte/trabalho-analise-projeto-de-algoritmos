@@ -2,109 +2,109 @@
 --- Scenario I: Sorting with 1000 ratings ---
 
 --- Metrics from UserId ---
-Key Comparisons: 8692
+Key Comparisons: 8706
 Register Copies: 19952
 Total Time Spent: 0.000112 seconds
 
 --- Metrics from MoveId ---
-Key Comparisons: 8710
+Key Comparisons: 8698
 Register Copies: 19952
-Total Time Spent: 0.000123 seconds
+Total Time Spent: 0.000122 seconds
 
 --- Metrics from Timestamp ---
-Key Comparisons: 8701
+Key Comparisons: 8739
 Register Copies: 19952
-Total Time Spent: 0.000116 seconds
+Total Time Spent: 0.000125 seconds
 
 --- Metrics from Rating ---
-Key Comparisons: 8284
+Key Comparisons: 8326
 Register Copies: 19952
-Total Time Spent: 0.000105 seconds
+Total Time Spent: 0.000099 seconds
 
 --- Scenario I: Sorting with 5000 ratings ---
 
 --- Metrics from UserId ---
-Key Comparisons: 55251
+Key Comparisons: 55264
 Register Copies: 123616
-Total Time Spent: 0.000608 seconds
+Total Time Spent: 0.000653 seconds
 
 --- Metrics from MoveId ---
 Key Comparisons: 55204
 Register Copies: 123616
-Total Time Spent: 0.000582 seconds
+Total Time Spent: 0.000685 seconds
 
 --- Metrics from Timestamp ---
-Key Comparisons: 55220
+Key Comparisons: 55233
 Register Copies: 123616
-Total Time Spent: 0.000598 seconds
+Total Time Spent: 0.000587 seconds
 
 --- Metrics from Rating ---
-Key Comparisons: 52511
+Key Comparisons: 52621
 Register Copies: 123616
-Total Time Spent: 0.000499 seconds
+Total Time Spent: 0.000636 seconds
 
 --- Scenario I: Sorting with 10000 ratings ---
 
 --- Metrics from UserId ---
-Key Comparisons: 120532
+Key Comparisons: 120419
 Register Copies: 267232
-Total Time Spent: 0.001333 seconds
+Total Time Spent: 0.001249 seconds
 
 --- Metrics from MoveId ---
-Key Comparisons: 120513
+Key Comparisons: 120439
 Register Copies: 267232
-Total Time Spent: 0.001245 seconds
+Total Time Spent: 0.001255 seconds
 
 --- Metrics from Timestamp ---
-Key Comparisons: 120458
+Key Comparisons: 120439
 Register Copies: 267232
-Total Time Spent: 0.001265 seconds
+Total Time Spent: 0.001292 seconds
 
 --- Metrics from Rating ---
-Key Comparisons: 114697
+Key Comparisons: 114606
 Register Copies: 267232
-Total Time Spent: 0.000999 seconds
+Total Time Spent: 0.001023 seconds
 
 --- Scenario I: Sorting with 50000 ratings ---
 
 --- Metrics from UserId ---
-Key Comparisons: 718163
+Key Comparisons: 718320
 Register Copies: 1568928
-Total Time Spent: 0.007712 seconds
+Total Time Spent: 0.007251 seconds
 
 --- Metrics from MoveId ---
-Key Comparisons: 718297
+Key Comparisons: 718124
 Register Copies: 1568928
-Total Time Spent: 0.006676 seconds
+Total Time Spent: 0.007058 seconds
 
 --- Metrics from Timestamp ---
-Key Comparisons: 718102
+Key Comparisons: 718243
 Register Copies: 1568928
-Total Time Spent: 0.007116 seconds
+Total Time Spent: 0.007177 seconds
 
 --- Metrics from Rating ---
-Key Comparisons: 679284
+Key Comparisons: 679357
 Register Copies: 1568928
-Total Time Spent: 0.005257 seconds
+Total Time Spent: 0.005382 seconds
 
 --- Scenario I: Sorting with 100000 ratings ---
 
 --- Metrics from UserId ---
-Key Comparisons: 1536509
+Key Comparisons: 1536643
 Register Copies: 3337856
-Total Time Spent: 0.014696 seconds
+Total Time Spent: 0.015022 seconds
 
 --- Metrics from MoveId ---
-Key Comparisons: 1536417
+Key Comparisons: 1536597
 Register Copies: 3337856
-Total Time Spent: 0.013949 seconds
+Total Time Spent: 0.014114 seconds
 
 --- Metrics from Timestamp ---
-Key Comparisons: 1536568
+Key Comparisons: 1536067
 Register Copies: 3337856
-Total Time Spent: 0.014744 seconds
+Total Time Spent: 0.015259 seconds
 
 --- Metrics from Rating ---
-Key Comparisons: 1451782
+Key Comparisons: 1450928
 Register Copies: 3337856
-Total Time Spent: 0.011170 seconds
+Total Time Spent: 0.011367 seconds

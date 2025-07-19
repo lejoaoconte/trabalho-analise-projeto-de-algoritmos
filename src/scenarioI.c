@@ -4,15 +4,11 @@
 #include <stdlib.h>
 #include <time.h>
 
-// --- Constants ---
 #define OUTPUT_FILE "scenarioI_results.txt"
-#define MAX_RATINGS_IN_MEMORY 26024288 // From original code
+#define MAX_RATINGS_IN_MEMORY 26024288
 
-// --- Static Helper Function Prototypes ---
 static void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile);
 static int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize, int fieldSelector);
-
-// --- Public Function Implementation ---
 
 void runScenarioI(const MoveRating *ratings, int numRatings)
 {
@@ -22,14 +18,11 @@ void runScenarioI(const MoveRating *ratings, int numRatings)
         return;
     }
 
-    // Test sizes for the scenario
     int testSizes[] = {1000, 5000, 10000, 50000, 100000};
     int numTestSizes = sizeof(testSizes) / sizeof(testSizes[0]);
 
-    // Seed the random number generator
     srand(time(NULL));
 
-    // Open the log file once in write mode to clear it
     FILE *logFile = fopen(OUTPUT_FILE, "w");
     if (logFile == NULL)
     {
@@ -49,7 +42,6 @@ void runScenarioI(const MoveRating *ratings, int numRatings)
         printf("\n--- Scenario I: Sorting with %d ratings ---\n", currentSize);
         fprintf(logFile, "\n--- Scenario I: Sorting with %d ratings ---\n", currentSize);
 
-        // 0: userId, 1: moveId, 2: timestamp, 3: rating
         int *userIds = createRandomSubset(ratings, numRatings, currentSize, 0);
         int *moveIds = createRandomSubset(ratings, numRatings, currentSize, 1);
         int *timestamps = createRandomSubset(ratings, numRatings, currentSize, 2);
@@ -70,12 +62,6 @@ void runScenarioI(const MoveRating *ratings, int numRatings)
     printf("\nScenario I completed successfully. Results saved to %s\n", OUTPUT_FILE);
 }
 
-// --- Static Helper Function Implementations ---
-
-/**
- * Creates an array of integers by selecting a specific field from a random subset of ratings.
- * fieldSelector: 0=userId, 1=moveId, 2=timestamp, 3=rating
- */
 static int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize, int fieldSelector)
 {
     int *subset = malloc(subsetSize * sizeof(int));
@@ -101,15 +87,12 @@ static int *createRandomSubset(const MoveRating *allRatings, int totalRatings, i
             break;
         case 3:
             subset[i] = (int)allRatings[randomIndex].rating;
-            break; // Note: Casting float to int
+            break;
         }
     }
     return subset;
 }
 
-/**
- * Sorts an array, measures performance, and logs the results to console and file.
- */
 static void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile)
 {
     if (data == NULL)
@@ -123,13 +106,11 @@ static void runAndLogSort(int *data, int size, const char *metricName, FILE *log
 
     double timeSpent = ((double)(end - start)) / CLOCKS_PER_SEC;
 
-    // Print to console
     printf("\n--- Metrics from %s ---\n", metricName);
     printf("Key Comparisons: %lld\n", comparisons);
     printf("Register Copies: %lld\n", copies);
     printf("Total Time Spent: %.6f seconds\n", timeSpent);
 
-    // Print to file
     fprintf(logFile, "\n--- Metrics from %s ---\n", metricName);
     fprintf(logFile, "Key Comparisons: %lld\n", comparisons);
     fprintf(logFile, "Register Copies: %lld\n", copies);

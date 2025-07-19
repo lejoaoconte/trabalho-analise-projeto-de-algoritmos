@@ -16,16 +16,14 @@ int importData(MoveRating **ratings, int *capacity, const char *filename)
     char line[MAX_LINE_LENGTH];
     int count = 0;
 
-    // Skip the header line
     if (fgets(line, sizeof(line), fp) == NULL)
     {
         fclose(fp);
-        return 0; // File is empty or contains only a header
+        return 0;
     }
 
     while (fgets(line, sizeof(line), fp) != NULL)
     {
-        // Grow the array if it's full
         if (count == *capacity)
         {
             *capacity *= 2;
@@ -34,12 +32,11 @@ int importData(MoveRating **ratings, int *capacity, const char *filename)
             {
                 fprintf(stderr, "Memory reallocation failed\n");
                 fclose(fp);
-                return count; // Return what was successfully read
+                return count;
             }
             *ratings = temp;
         }
 
-        // Parse the CSV line
         if (sscanf(line, "%d,%d,%f,%d",
                    &(*ratings)[count].userId,
                    &(*ratings)[count].moveId,

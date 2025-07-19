@@ -3,7 +3,7 @@
 #include "data_handler.h"
 #include "scenarioI.h"
 
-#define INITIAL_CAPACITY 1000 // A more reasonable starting capacity
+#define INITIAL_CAPACITY 1000
 
 int main(int argc, char *argv[])
 {
@@ -30,7 +30,6 @@ int main(int argc, char *argv[])
     {
         printf("Successfully imported %d ratings.\n", numRatings);
 
-        // Run the analysis scenario
         runScenarioI(ratings, numRatings);
     }
     else if (numRatings == 0)
@@ -42,7 +41,6 @@ int main(int argc, char *argv[])
         fprintf(stderr, "An error occurred during file import.\n");
     }
 
-    // Clean up
     free(ratings);
     printf("Program finished.\n");
 
