@@ -1,0 +1,110 @@
+
+--- Scenario I: Sorting with 1000 ratings ---
+
+--- Metrics from UserId ---
+Key Comparisons: 8692
+Register Copies: 19952
+Total Time Spent: 0.000112 seconds
+
+--- Metrics from MoveId ---
+Key Comparisons: 8710
+Register Copies: 19952
+Total Time Spent: 0.000123 seconds
+
+--- Metrics from Timestamp ---
+Key Comparisons: 8701
+Register Copies: 19952
+Total Time Spent: 0.000116 seconds
+
+--- Metrics from Rating ---
+Key Comparisons: 8284
+Register Copies: 19952
+Total Time Spent: 0.000105 seconds
+
+--- Scenario I: Sorting with 5000 ratings ---
+
+--- Metrics from UserId ---
+Key Comparisons: 55251
+Register Copies: 123616
+Total Time Spent: 0.000608 seconds
+
+--- Metrics from MoveId ---
+Key Comparisons: 55204
+Register Copies: 123616
+Total Time Spent: 0.000582 seconds
+
+--- Metrics from Timestamp ---
+Key Comparisons: 55220
+Register Copies: 123616
+Total Time Spent: 0.000598 seconds
+
+--- Metrics from Rating ---
+Key Comparisons: 52511
+Register Copies: 123616
+Total Time Spent: 0.000499 seconds
+
+--- Scenario I: Sorting with 10000 ratings ---
+
+--- Metrics from UserId ---
+Key Comparisons: 120532
+Register Copies: 267232
+Total Time Spent: 0.001333 seconds
+
+--- Metrics from MoveId ---
+Key Comparisons: 120513
+Register Copies: 267232
+Total Time Spent: 0.001245 seconds
+
+--- Metrics from Timestamp ---
+Key Comparisons: 120458
+Register Copies: 267232
+Total Time Spent: 0.001265 seconds
+
+--- Metrics from Rating ---
+Key Comparisons: 114697
+Register Copies: 267232
+Total Time Spent: 0.000999 seconds
+
+--- Scenario I: Sorting with 50000 ratings ---
+
+--- Metrics from UserId ---
+Key Comparisons: 718163
+Register Copies: 1568928
+Total Time Spent: 0.007712 seconds
+
+--- Metrics from MoveId ---
+Key Comparisons: 718297
+Register Copies: 1568928
+Total Time Spent: 0.006676 seconds
+
+--- Metrics from Timestamp ---
+Key Comparisons: 718102
+Register Copies: 1568928
+Total Time Spent: 0.007116 seconds
+
+--- Metrics from Rating ---
+Key Comparisons: 679284
+Register Copies: 1568928
+Total Time Spent: 0.005257 seconds
+
+--- Scenario I: Sorting with 100000 ratings ---
+
+--- Metrics from UserId ---
+Key Comparisons: 1536509
+Register Copies: 3337856
+Total Time Spent: 0.014696 seconds
+
+--- Metrics from MoveId ---
+Key Comparisons: 1536417
+Register Copies: 3337856
+Total Time Spent: 0.013949 seconds
+
+--- Metrics from Timestamp ---
+Key Comparisons: 1536568
+Register Copies: 3337856
+Total Time Spent: 0.014744 seconds
+
+--- Metrics from Rating ---
+Key Comparisons: 1451782
+Register Copies: 3337856
+Total Time Spent: 0.011170 seconds
