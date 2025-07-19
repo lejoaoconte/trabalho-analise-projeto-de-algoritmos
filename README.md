@@ -1,6 +1,7 @@
 # run
 
 make 
+
 make run DATASET=./data/ratings.csv
 
 # dataset
