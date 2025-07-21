@@ -55,19 +55,19 @@ void runScenarioII(const MoveRating *ratings, int numRatings)
             fprintf(logFile, "\n--- Scenario II: Sorting with %d ratings ---\n", currentSize);
 
             int *userIds = createRandomSubset(ratings, numRatings, currentSize, 0);
-            int *moveIds = createRandomSubset(ratings, numRatings, currentSize, 1);
-            int *timestamps = createRandomSubset(ratings, numRatings, currentSize, 2);
-            int *ratingValues = createRandomSubset(ratings, numRatings, currentSize, 3);
+            // int *moveIds = createRandomSubset(ratings, numRatings, currentSize, 1);
+            // int *timestamps = createRandomSubset(ratings, numRatings, currentSize, 2);
+            // int *ratingValues = createRandomSubset(ratings, numRatings, currentSize, 3);
 
             runAndLogSort(userIds, currentSize, "UserId", logFile, csvFile, count);
-            runAndLogSort(moveIds, currentSize, "MoveId", logFile, csvFile, count);
-            runAndLogSort(timestamps, currentSize, "Timestamp", logFile, csvFile, count);
-            runAndLogSort(ratingValues, currentSize, "Rating", logFile, csvFile, count);
+            // runAndLogSort(moveIds, currentSize, "MoveId", logFile, csvFile, count);
+            // runAndLogSort(timestamps, currentSize, "Timestamp", logFile, csvFile, count);
+            // runAndLogSort(ratingValues, currentSize, "Rating", logFile, csvFile, count);
 
             free(userIds);
-            free(moveIds);
-            free(timestamps);
-            free(ratingValues);
+            // free(moveIds);
+            // free(timestamps);
+            // free(ratingValues);
         }
     }
 
