@@ -1,15 +1,14 @@
-#include "scenarioI.h"
+#include "scenarioII.h"
+#include "utils.h"
 #include "sorting.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
 #define OUTPUT_FILE "scenarioII_results.txt"
+#define OUTPUT_CSV_FILE "running_scenarioII"
 #define MAX_RATINGS_IN_MEMORY 26024288
 #define MAX_QUANTITY_EXECUTIONS 5
-
-static void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile);
-static int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize, int fieldSelector);
 
 void runScenarioII(const MoveRating *ratings, int numRatings)
 {
@@ -33,6 +32,16 @@ void runScenarioII(const MoveRating *ratings, int numRatings)
 
     for (int count = 0; count < MAX_QUANTITY_EXECUTIONS; count++)
     {
+        char fileName[256];
+        snprintf(fileName, sizeof(fileName), OUTPUT_CSV_FILE "_%d.csv", count+1);
+        FILE *csvFile = fopen(fileName, "w");
+        if (csvFile == NULL)
+        {
+            perror("Error opening CSV file for writing");
+            fclose(logFile);
+            return;
+        }
+
         fprintf(logFile, "\n--- Execution %d of Scenario II ---\n", count + 1);
         for (int i = 0; i < numTestSizes; i++)
         {
@@ -50,10 +59,10 @@ void runScenarioII(const MoveRating *ratings, int numRatings)
             int *timestamps = createRandomSubset(ratings, numRatings, currentSize, 2);
             int *ratingValues = createRandomSubset(ratings, numRatings, currentSize, 3);
 
-            runAndLogSort(userIds, currentSize, "UserId", logFile);
-            runAndLogSort(moveIds, currentSize, "MoveId", logFile);
-            runAndLogSort(timestamps, currentSize, "Timestamp", logFile);
-            runAndLogSort(ratingValues, currentSize, "Rating", logFile);
+            runAndLogSort(userIds, currentSize, "UserId", logFile, csvFile, count);
+            runAndLogSort(moveIds, currentSize, "MoveId", logFile, csvFile, count);
+            runAndLogSort(timestamps, currentSize, "Timestamp", logFile, csvFile, count);
+            runAndLogSort(ratingValues, currentSize, "Rating", logFile, csvFile, count);
 
             free(userIds);
             free(moveIds);
@@ -66,52 +75,4 @@ void runScenarioII(const MoveRating *ratings, int numRatings)
     printf("\nScenario II completed successfully. Results saved to %s\n", OUTPUT_FILE);
 }
 
-static int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize, int fieldSelector)
-{
-    int *subset = malloc(subsetSize * sizeof(int));
-    if (subset == NULL)
-    {
-        fprintf(stderr, "Memory allocation failed for subset array.\n");
-        return NULL;
-    }
 
-    for (int i = 0; i < subsetSize; i++)
-    {
-        int randomIndex = rand() % totalRatings;
-        switch (fieldSelector)
-        {
-        case 0:
-            subset[i] = allRatings[randomIndex].userId;
-            break;
-        case 1:
-            subset[i] = allRatings[randomIndex].moveId;
-            break;
-        case 2:
-            subset[i] = allRatings[randomIndex].timestamp;
-            break;
-        case 3:
-            subset[i] = (int)allRatings[randomIndex].rating;
-            break;
-        }
-    }
-    return subset;
-}
-
-static void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile)
-{
-    if (data == NULL)
-        return;
-
-    long long comparisons = 0, copies = 0;
-
-    clock_t start = clock();
-    mergeSort(data, 0, size - 1, &comparisons, &copies);
-    clock_t end = clock();
-
-    double timeSpent = ((double)(end - start)) / CLOCKS_PER_SEC;
-
-    fprintf(logFile, "\n--- Metrics from %s ---\n", metricName);
-    fprintf(logFile, "Key Comparisons: %lld\n", comparisons);
-    fprintf(logFile, "Register Copies: %lld\n", copies);
-    fprintf(logFile, "Total Time Spent: %.6f seconds\n", timeSpent);
-}

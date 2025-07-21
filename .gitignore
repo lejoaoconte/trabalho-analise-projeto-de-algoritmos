@@ -1,6 +1,5 @@
 data
 bin
 obj
-scenarioI_results.txt
-scenarioII_results.txt
-scenarioIII_results.txt
+*.txt
+*.csv
