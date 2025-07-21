@@ -4,18 +4,18 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define OUTPUT_FILE "scenarioI_results.txt"
+#define OUTPUT_FILE "scenarioII_results.txt"
 #define MAX_RATINGS_IN_MEMORY 26024288
 #define MAX_QUANTITY_EXECUTIONS 5
 
 static void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile);
 static int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize, int fieldSelector);
 
-void runScenarioI(const MoveRating *ratings, int numRatings)
+void runScenarioII(const MoveRating *ratings, int numRatings)
 {
     if (numRatings <= 0)
     {
-        printf("No ratings data to process for Scenario I.\n");
+        printf("No ratings data to process for Scenario II.\n");
         return;
     }
 
@@ -33,7 +33,7 @@ void runScenarioI(const MoveRating *ratings, int numRatings)
 
     for (int count = 0; count < MAX_QUANTITY_EXECUTIONS; count++)
     {
-        fprintf(logFile, "\n--- Execution %d of Scenario I ---\n", count + 1);
+        fprintf(logFile, "\n--- Execution %d of Scenario II ---\n", count + 1);
         for (int i = 0; i < numTestSizes; i++)
         {
             int currentSize = testSizes[i];
@@ -43,7 +43,7 @@ void runScenarioI(const MoveRating *ratings, int numRatings)
                 continue;
             }
 
-            fprintf(logFile, "\n--- Scenario I: Sorting with %d ratings ---\n", currentSize);
+            fprintf(logFile, "\n--- Scenario II: Sorting with %d ratings ---\n", currentSize);
 
             int *userIds = createRandomSubset(ratings, numRatings, currentSize, 0);
             int *moveIds = createRandomSubset(ratings, numRatings, currentSize, 1);
@@ -63,7 +63,7 @@ void runScenarioI(const MoveRating *ratings, int numRatings)
     }
 
     fclose(logFile);
-    printf("\nScenario I completed successfully. Results saved to %s\n", OUTPUT_FILE);
+    printf("\nScenario II completed successfully. Results saved to %s\n", OUTPUT_FILE);
 }
 
 static int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize, int fieldSelector)

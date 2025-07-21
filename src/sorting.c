@@ -80,3 +80,41 @@ void mergeSort(int arr[], int left, int right, long long *comparisons, long long
         merge(arr, left, mid, right, comparisons, copies);
     }
 }
+
+void insertionSort(int arr[], int n, long long *comparisons, long long *copies)
+{
+    for (int i = 1; i < n; i++)
+    {
+        int key = arr[i];
+        int j = i - 1;
+
+        while (j >= 0 && arr[j] > key)
+        {
+            (*comparisons)++;
+            arr[j + 1] = arr[j];
+            (*copies)++;
+            j--;
+        }
+        arr[j + 1] = key;
+        (*copies)++;
+    }
+}
+
+
+void specialMergeSort(int arr[], int left, int right, long long *comparisons, long long *copies)
+{
+    if (right - left <= 100)
+    {
+        insertionSort(arr + left, right - left + 1, comparisons, copies);
+        return;
+    }
+
+    if (left < right)
+    {
+        int mid = left + (right - left) / 2;
+
+        specialMergeSort(arr, left, mid, comparisons, copies);
+        specialMergeSort(arr, mid + 1, right, comparisons, copies);
+        merge(arr, left, mid, right, comparisons, copies);
+    }
+}

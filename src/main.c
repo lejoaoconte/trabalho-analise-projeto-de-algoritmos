@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "data_handler.h"
 #include "scenarioI.h"
+#include "scenarioII.h"
 
 #define INITIAL_CAPACITY 1000
 
@@ -31,6 +32,7 @@ int main(int argc, char *argv[])
         printf("Successfully imported %d ratings.\n", numRatings);
 
         runScenarioI(ratings, numRatings);
+        runScenarioII(ratings, numRatings);
     }
     else if (numRatings == 0)
     {
