@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-static void merge(int arr[], int left, int mid, int right, long long *comparisons, long long *copies)
+static void merge(MoveRating arr[], int left, int mid, int right, long long *comparisons, long long *copies)
 {
     int i, j, k;
     int n1 = mid - left + 1;
     int n2 = right - mid;
 
-    int *L = (int *)malloc(n1 * sizeof(int));
-    int *R = (int *)malloc(n2 * sizeof(int));
+    MoveRating *L = (MoveRating *)malloc(n1 * sizeof(MoveRating));
+    MoveRating *R = (MoveRating *)malloc(n2 * sizeof(MoveRating));
     if (!L || !R)
     {
         fprintf(stderr, "Failed to allocate memory in merge.\n");
@@ -35,7 +35,7 @@ static void merge(int arr[], int left, int mid, int right, long long *comparison
     while (i < n1 && j < n2)
     {
         (*comparisons)++;
-        if (L[i] <= R[j])
+        if (L[i].moveId <= R[j].userId)
         {
             arr[k] = L[i];
             i++;
@@ -69,7 +69,7 @@ static void merge(int arr[], int left, int mid, int right, long long *comparison
     free(R);
 }
 
-void mergeSort(int arr[], int left, int right, long long *comparisons, long long *copies)
+void mergeSort(MoveRating arr[], int left, int right, long long *comparisons, long long *copies)
 {
     if (left < right)
     {
@@ -81,14 +81,15 @@ void mergeSort(int arr[], int left, int right, long long *comparisons, long long
     }
 }
 
-void insertionSort(int arr[], int n, long long *comparisons, long long *copies)
+void insertionSort(MoveRating arr[], int n, long long *comparisons, long long *copies)
 {
     for (int i = 1; i < n; i++)
     {
-        int key = arr[i];
+        MoveRating key = arr[i];
         int j = i - 1;
 
-        while (j >= 0 && arr[j] > key)
+        (*comparisons)++;
+        while (j >= 0 && arr[j].userId > key.userId)
         {
             (*comparisons)++;
             arr[j + 1] = arr[j];
@@ -101,7 +102,7 @@ void insertionSort(int arr[], int n, long long *comparisons, long long *copies)
 }
 
 
-void specialMergeSort(int arr[], int left, int right, long long *comparisons, long long *copies)
+void specialMergeSort(MoveRating arr[], int left, int right, long long *comparisons, long long *copies)
 {
     if (right - left <= 100)
     {

@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile, FILE *csvFile, int count, int scenario)
+void runAndLogSort(MoveRating *data, int size, const char *metricName, FILE *logFile, FILE *csvFile, int count, int scenario)
 {
     if (data == NULL)
         return;
@@ -28,9 +28,9 @@ void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile, F
     fprintf(csvFile, "%d,%d,%s,%lld,%lld,%.6f\n", count + 1, size, metricName, comparisons, copies, timeSpent);
 }
 
-int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize, int fieldSelector)
+MoveRating *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subsetSize)
 {
-    int *subset = malloc(subsetSize * sizeof(int));
+    MoveRating *subset = malloc(subsetSize * sizeof(MoveRating));
     if (subset == NULL)
     {
         fprintf(stderr, "Memory allocation failed for subset array.\n");
@@ -40,21 +40,7 @@ int *createRandomSubset(const MoveRating *allRatings, int totalRatings, int subs
     for (int i = 0; i < subsetSize; i++)
     {
         int randomIndex = rand() % totalRatings;
-        switch (fieldSelector)
-        {
-        case 0:
-            subset[i] = allRatings[randomIndex].userId;
-            break;
-        case 1:
-            subset[i] = allRatings[randomIndex].moveId;
-            break;
-        case 2:
-            subset[i] = allRatings[randomIndex].timestamp;
-            break;
-        case 3:
-            subset[i] = (int)allRatings[randomIndex].rating;
-            break;
-        }
+        subset[i] = allRatings[randomIndex];
     }
     return subset;
 }
