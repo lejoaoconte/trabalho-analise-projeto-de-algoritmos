@@ -59,7 +59,7 @@ void runScenarioII(const MoveRating *ratings, int numRatings)
             // int *timestamps = createRandomSubset(ratings, numRatings, currentSize, 2);
             // int *ratingValues = createRandomSubset(ratings, numRatings, currentSize, 3);
 
-            runAndLogSort(userIds, currentSize, "UserId", logFile, csvFile, count);
+            runAndLogSort(userIds, currentSize, "UserId", logFile, csvFile, count, 2);
             // runAndLogSort(moveIds, currentSize, "MoveId", logFile, csvFile, count);
             // runAndLogSort(timestamps, currentSize, "Timestamp", logFile, csvFile, count);
             // runAndLogSort(ratingValues, currentSize, "Rating", logFile, csvFile, count);

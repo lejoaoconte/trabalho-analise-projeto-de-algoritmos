@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include <time.h>
 
-void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile, FILE *csvFile, int count)
+void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile, FILE *csvFile, int count, int scenario)
 {
     if (data == NULL)
         return;
@@ -12,7 +12,10 @@ void runAndLogSort(int *data, int size, const char *metricName, FILE *logFile, F
     long long comparisons = 0, copies = 0;
 
     clock_t start = clock();
-    mergeSort(data, 0, size - 1, &comparisons, &copies);
+    if (scenario == 1)
+        mergeSort(data, 0, size - 1, &comparisons, &copies);
+    else if (scenario == 2)
+        specialMergeSort(data, 0, size - 1, &comparisons, &copies);
     clock_t end = clock();
 
     double timeSpent = ((double)(end - start)) / CLOCKS_PER_SEC;
