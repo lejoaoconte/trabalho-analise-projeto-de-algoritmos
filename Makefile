@@ -42,7 +42,7 @@ run: all
 # Clean up build artifacts
 clean:
 	@echo "Cleaning up..."
-	rm -rf $(OBJ_DIR) $(BIN_DIR) scenarioI_results.txt
+	rm -rf $(OBJ_DIR) $(BIN_DIR) *.txt *.csv
 
 # Phony targets
 .PHONY: all run clean

@@ -3,6 +3,7 @@
 #include "data_handler.h"
 #include "scenarioI.h"
 #include "scenarioII.h"
+#include "scenarioIII.h"
 
 #define INITIAL_CAPACITY 1000
 
@@ -33,6 +34,7 @@ int main(int argc, char *argv[])
 
         runScenarioI(ratings, numRatings);
         runScenarioII(ratings, numRatings);
+        runScenarioIII(ratings, numRatings);
     }
     else if (numRatings == 0)
     {

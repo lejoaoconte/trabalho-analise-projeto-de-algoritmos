@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "sorting.h": "c",
-        "utils.h": "c"
+        "utils.h": "c",
+        "data_handler.h": "c"
     }
 }
