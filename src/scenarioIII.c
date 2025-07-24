@@ -34,7 +34,6 @@ void runScenarioIII(const MoveRating *ratings, int numRatings)
     // A lista de tamanhos inclui 1000, 5000, 10000, 50000, 100000, 500000 e 1000000
     int testSizes[] = {1000, 5000, 10000, 50000, 100000, 500000, 1000000};
     int numTestSizes = sizeof(testSizes) / sizeof(testSizes[0]);
-    int seeds[] = {123, 456, 789};
 
     // Abre os arquivos de log para escrita para armazenar os dados do hashing encadeado
     FILE *logFileChaining = fopen(OUTPUT_FILE_CHAINING, "w");
@@ -103,13 +102,11 @@ void runScenarioIII(const MoveRating *ratings, int numRatings)
         // Imprime no log o tamanho atual do teste
         fprintf(logFileLinear, "\n--- Scenario III: Hashing with N = %d ---\n", currentSize);
         fprintf(logFileChaining, "\n--- Scenario III: Hashing with N = %d ---\n", currentSize);
-        
 
         // Executa o hashing encadeado e o hashing linear para cada semente definida, no caso 3 vezes
         for (int j = 0; j < MAX_QUANTITY_EXECUTIONS; j++)
         {
             // Define a semente para a geração de números aleatórios
-            srand(seeds[j]);
             // Cria um subconjunto aleatório dos ratings para o tamanho atual do teste
             MoveRating *subset = createRandomSubset(ratings, numRatings, currentSize);
 
@@ -124,7 +121,7 @@ void runScenarioIII(const MoveRating *ratings, int numRatings)
             long memoryChaining = getMemoryUsageChaining(htc);
             totalComparisonsChaining += comparisonsChaining;
             totalMemoryChaining += memoryChaining;
-            fprintf(csvFileChaining, "%d,%d,%lld,%ld\n", currentSize, seeds[j], comparisonsChaining, memoryChaining);
+            fprintf(csvFileChaining, "%d,%lld,%ld\n", currentSize, comparisonsChaining, memoryChaining);
 
             // Libera a memória alocada para o hashing encadeado
             // Armazena os resultados de comparação e uso de memória em arquivos CSV
@@ -137,7 +134,7 @@ void runScenarioIII(const MoveRating *ratings, int numRatings)
             long memoryLinear = getMemoryUsageLinear(htl);
             totalComparisonsLinear += comparisonsLinear;
             totalMemoryLinear += memoryLinear;
-            fprintf(csvFileLinear, "%d,%d,%lld,%ld\n", currentSize, seeds[j], comparisonsLinear, memoryLinear);
+            fprintf(csvFileLinear, "%d,%lld,%ld\n", currentSize, comparisonsLinear, memoryLinear);
 
             // Libera a memória alocada para o hashing encadeado
             freeHashTableChaining(htc);
